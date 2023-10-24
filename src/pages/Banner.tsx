@@ -5,7 +5,7 @@ import React from 'react';
 const Blank = () => {
   return (
     <div>
-      <ContentHeader title="Blank Page" />
+      <ContentHeader title="Banner" />
       <section className="content">
         <div className="container-fluid">
           <div className="card">
