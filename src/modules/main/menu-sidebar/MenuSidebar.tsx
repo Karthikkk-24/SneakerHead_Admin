@@ -20,11 +20,11 @@ export const MENU: IMenuItem[] = [
     icon: "fas fa-tachometer-alt nav-icon",
     path: "/",
   },
-  {
-    name: i18n.t("menusidebar.label.blank"),
-    icon: "fas fa-wrench nav-icon",
-    path: "/blank",
-  },
+//   {
+//     name: i18n.t("menusidebar.label.blank"),
+//     icon: "fas fa-wrench nav-icon",
+//     path: "/blank",
+//   },
   {
     name: i18n.t("Landing Page"),
     icon: "far fa-caret-square-down nav-icon",
@@ -42,12 +42,12 @@ export const MENU: IMenuItem[] = [
       {
         name: i18n.t("Contact Details"),
         icon: "fas fa-hammer nav-icon",
-        path: "/banner",
+        path: "/contact-details",
       },
       {
         name: i18n.t("About"),
         icon: "fas fa-cogs nav-icon",
-        path: "/specials",
+        path: "/about",
       },
     ],
   },
@@ -58,22 +58,22 @@ export const MENU: IMenuItem[] = [
       {
         name: i18n.t("Categories"),
         icon: "fas fa-hammer nav-icon",
-        path: "/banner",
+        path: "/categories",
       },
       {
         name: i18n.t("Sub Categories"),
         icon: "fas fa-cogs nav-icon",
-        path: "/specials",
+        path: "/sub-categories",
       },
       {
         name: i18n.t("Products"),
         icon: "fas fa-hammer nav-icon",
-        path: "/banner",
+        path: "/products",
       },
       {
         name: i18n.t("Accessories"),
         icon: "fas fa-cogs nav-icon",
-        path: "/specials",
+        path: "/accessories",
       },
     ],
   },
@@ -84,17 +84,17 @@ export const MENU: IMenuItem[] = [
       {
         name: i18n.t("Orders"),
         icon: "fas fa-hammer nav-icon",
-        path: "/banner",
+        path: "/orders",
       },
       {
         name: i18n.t("Coupons"),
         icon: "fas fa-cogs nav-icon",
-        path: "/specials",
+        path: "/coupons",
       },
       {
         name: i18n.t("Average Order Details"),
         icon: "fas fa-hammer nav-icon",
-        path: "/banner",
+        path: "/average-order-details",
       },
     ],
   },
@@ -105,12 +105,12 @@ export const MENU: IMenuItem[] = [
       {
         name: i18n.t("User List"),
         icon: "fas fa-hammer nav-icon",
-        path: "/banner",
+        path: "/user-list",
       },
       {
         name: i18n.t("User Notification"),
         icon: "fas fa-cogs nav-icon",
-        path: "/specials",
+        path: "/user-notification",
       },
     ],
   },
@@ -121,12 +121,12 @@ export const MENU: IMenuItem[] = [
       {
         name: i18n.t("Footer"),
         icon: "fas fa-hammer nav-icon",
-        path: "/banner",
+        path: "/footer",
       },
       {
         name: i18n.t("Social Media"),
         icon: "fas fa-cogs nav-icon",
-        path: "/specials",
+        path: "/social-media",
       },
     ],
   },
@@ -137,22 +137,22 @@ export const MENU: IMenuItem[] = [
       {
         name: i18n.t("Upcoming"),
         icon: "fas fa-hammer nav-icon",
-        path: "/banner",
+        path: "/news-section",
       },
       {
         name: i18n.t("Top Deals"),
         icon: "fas fa-cogs nav-icon",
-        path: "/specials",
+        path: "/top-deals",
       },
       {
         name: i18n.t("Ratings"),
         icon: "fas fa-hammer nav-icon",
-        path: "/banner",
+        path: "/ratings",
       },
       {
         name: i18n.t("Best Sellers"),
         icon: "fas fa-cogs nav-icon",
-        path: "/specials",
+        path: "/best-sellers",
       },
     ],
   },

@@ -11,12 +11,33 @@ import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
+import About from '@pages/About';
+import Accessories from '@pages/Accessories';
+import AverageOrder from '@pages/AverageOrder';
 import Banner from '@pages/Banner';
-import Blank from '@pages/Blank';
+import Categories from '@pages/Categories';
+import Contact from '@pages/Contact';
+import Coupons from '@pages/Coupons';
 import Dashboard from '@pages/Dashboard';
+import Footer from '@pages/Footer';
+// import Login from '@pages/Login';
+import BestSellers from '@pages/BestSellers';
+import Orders from '@pages/Orders';
+import Products from '@pages/Products';
+import Ratings from '@pages/Ratings';
+import SocialMedia from '@pages/SocialMedia';
+import Specials from '@pages/Specials';
+import SubCategories from '@pages/SubCategories';
+import TopDeals from '@pages/TopDeals';
+import Upcoming from '@pages/Upcoming';
+import UserNotification from '@pages/UserNotification';
+import Users from '@pages/Users';
+
+import Blank from '@pages/Blank';
 import SubMenu from '@pages/SubMenu';
 import Profile from '@pages/profile/Profile';
 
+import { User } from 'oidc-client-ts';
 import PrivateRoute from './routes/PrivateRoute';
 import PublicRoute from './routes/PublicRoute';
 import { setAuthentication } from './store/reducers/auth';
@@ -88,9 +109,27 @@ const App = () => {
             <Route path="/sub-menu-2" element={<Blank />} />
             <Route path="/sub-menu-1" element={<SubMenu />} />
             <Route path="/blank" element={<Blank />} />
-            <Route path="/banner" element={<Banner />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/" element={<Dashboard />} />
+            <Route path="/banner" element={<Banner />} />
+            <Route path="/specials" element={<Specials />} />
+            <Route path="/contact-details" element={<Contact />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/categories" element={<Categories />} />
+            <Route path="/sub-categories" element={<SubCategories />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/accessories" element={<Accessories />} />
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/coupons" element={<Coupons />} />
+            <Route path="/average-order-details" element={<AverageOrder />} />
+            <Route path="/user-list" element={<Users />} />
+            <Route path="/user-notification" element={<UserNotification />} />
+            <Route path="/footer" element={<Footer />} />
+            <Route path="/social-media" element={<SocialMedia />} />
+            <Route path="/upcoming" element={<Upcoming />} />
+            <Route path="/top-deals" element={<TopDeals />} />
+            <Route path="/ratings" element={<Ratings />} />
+            <Route path="/best-sellers" element={<BestSellers />} />
           </Route>
         </Route>
       </Routes>
