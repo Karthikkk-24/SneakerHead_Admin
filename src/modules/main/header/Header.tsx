@@ -1,12 +1,12 @@
-import React, {useCallback} from 'react';
-import {Link} from 'react-router-dom';
-import {useTranslation} from 'react-i18next';
-import {useDispatch, useSelector} from 'react-redux';
-import {toggleControlSidebar, toggleSidebarMenu} from '@app/store/reducers/ui';
+import LanguagesDropdown from '@app/modules/main/header/languages-dropdown/LanguagesDropdown';
 import MessagesDropdown from '@app/modules/main/header/messages-dropdown/MessagesDropdown';
 import NotificationsDropdown from '@app/modules/main/header/notifications-dropdown/NotificationsDropdown';
-import LanguagesDropdown from '@app/modules/main/header/languages-dropdown/LanguagesDropdown';
 import UserDropdown from '@app/modules/main/header/user-dropdown/UserDropdown';
+import { toggleControlSidebar, toggleSidebarMenu } from '@app/store/reducers/ui';
+import React, { useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [t] = useTranslation();
@@ -47,26 +47,9 @@ const Header = () => {
             {t<string>('header.label.home')}
           </Link>
         </li>
-        <li className="nav-item d-none d-sm-inline-block">
-          <Link to="/" className="nav-link">
-            {t<string>('header.label.contact')}
-          </Link>
-        </li>
       </ul>
       <ul className="navbar-nav ml-auto">
-        <MessagesDropdown />
-        <NotificationsDropdown />
-        <LanguagesDropdown />
         <UserDropdown />
-        <li className="nav-item">
-          <button
-            type="button"
-            className="nav-link"
-            onClick={handleToggleControlSidebar}
-          >
-            <i className="fas fa-th-large" />
-          </button>
-        </li>
       </ul>
     </nav>
   );
