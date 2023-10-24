@@ -1,11 +1,11 @@
-import { SidebarSearch } from '@app/components/sidebar-search/SidebarSearch';
-import i18n from '@app/utils/i18n';
-import { MenuItem } from '@components';
-import { PfImage } from '@profabric/react-components';
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { SidebarSearch } from "@app/components/sidebar-search/SidebarSearch";
+import i18n from "@app/utils/i18n";
+import { MenuItem } from "@components";
+import { PfImage } from "@profabric/react-components";
+import React from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 export interface IMenuItem {
   name: string;
@@ -16,117 +16,146 @@ export interface IMenuItem {
 
 export const MENU: IMenuItem[] = [
   {
-    name: i18n.t('menusidebar.label.dashboard'),
-    icon: 'fas fa-tachometer-alt nav-icon',
-    path: '/'
+    name: i18n.t("menusidebar.label.dashboard"),
+    icon: "fas fa-tachometer-alt nav-icon",
+    path: "/",
   },
   {
-    name: i18n.t('menusidebar.label.blank'),
-    icon: 'fas fa-wrench nav-icon',
-    path: '/blank'
+    name: i18n.t("menusidebar.label.blank"),
+    icon: "fas fa-wrench nav-icon",
+    path: "/blank",
   },
   {
-    name: i18n.t('Landing Page'),
-    icon: 'far fa-caret-square-down nav-icon',
+    name: i18n.t("Landing Page"),
+    icon: "far fa-caret-square-down nav-icon",
     children: [
       {
-        name: i18n.t('Banners'),
-        icon: 'fas fa-hammer nav-icon',
-        path: '/banner'
+        name: i18n.t("Banners"),
+        icon: "fas fa-hammer nav-icon",
+        path: "/banner",
       },
       {
-        name: i18n.t('Specials'),
-        icon: 'fas fa-cogs nav-icon',
-        path: '/specials'
-      }
-    ]
+        name: i18n.t("Specials"),
+        icon: "fas fa-cogs nav-icon",
+        path: "/specials",
+      },
+      {
+        name: i18n.t("Contact Details"),
+        icon: "fas fa-hammer nav-icon",
+        path: "/banner",
+      },
+      {
+        name: i18n.t("About"),
+        icon: "fas fa-cogs nav-icon",
+        path: "/specials",
+      },
+    ],
   },
   {
-    name: i18n.t('Product Section'),
-    icon: 'far fa-caret-square-down nav-icon',
+    name: i18n.t("Product Section"),
+    icon: "far fa-caret-square-down nav-icon",
     children: [
       {
-        name: i18n.t('Categories'),
-        icon: 'fas fa-hammer nav-icon',
-        path: '/sub-menu-1'
+        name: i18n.t("Categories"),
+        icon: "fas fa-hammer nav-icon",
+        path: "/banner",
       },
-
       {
-        name: i18n.t('menusidebar.label.blank'),
-        icon: 'fas fa-cogs nav-icon',
-        path: '/sub-menu-2'
-      }
-    ]
+        name: i18n.t("Sub Categories"),
+        icon: "fas fa-cogs nav-icon",
+        path: "/specials",
+      },
+      {
+        name: i18n.t("Products"),
+        icon: "fas fa-hammer nav-icon",
+        path: "/banner",
+      },
+      {
+        name: i18n.t("Accessories"),
+        icon: "fas fa-cogs nav-icon",
+        path: "/specials",
+      },
+    ],
   },
   {
-    name: i18n.t('Order Management'),
-    icon: 'far fa-caret-square-down nav-icon',
+    name: i18n.t("Order Management"),
+    icon: "far fa-caret-square-down nav-icon",
     children: [
       {
-        name: i18n.t('menusidebar.label.subMenu'),
-        icon: 'fas fa-hammer nav-icon',
-        path: '/sub-menu-1'
+        name: i18n.t("Orders"),
+        icon: "fas fa-hammer nav-icon",
+        path: "/banner",
       },
-
       {
-        name: i18n.t('menusidebar.label.blank'),
-        icon: 'fas fa-cogs nav-icon',
-        path: '/sub-menu-2'
-      }
-    ]
+        name: i18n.t("Coupons"),
+        icon: "fas fa-cogs nav-icon",
+        path: "/specials",
+      },
+      {
+        name: i18n.t("Average Order Details"),
+        icon: "fas fa-hammer nav-icon",
+        path: "/banner",
+      },
+    ],
   },
   {
-    name: i18n.t('User Management'),
-    icon: 'far fa-caret-square-down nav-icon',
+    name: i18n.t("User Management"),
+    icon: "far fa-caret-square-down nav-icon",
     children: [
       {
-        name: i18n.t('menusidebar.label.subMenu'),
-        icon: 'fas fa-hammer nav-icon',
-        path: '/sub-menu-1'
+        name: i18n.t("User List"),
+        icon: "fas fa-hammer nav-icon",
+        path: "/banner",
       },
-
       {
-        name: i18n.t('menusidebar.label.blank'),
-        icon: 'fas fa-cogs nav-icon',
-        path: '/sub-menu-2'
-      }
-    ]
+        name: i18n.t("User Notification"),
+        icon: "fas fa-cogs nav-icon",
+        path: "/specials",
+      },
+    ],
   },
   {
-    name: i18n.t('Link Management'),
-    icon: 'far fa-caret-square-down nav-icon',
+    name: i18n.t("Link Management"),
+    icon: "far fa-caret-square-down nav-icon",
     children: [
       {
-        name: i18n.t('menusidebar.label.subMenu'),
-        icon: 'fas fa-hammer nav-icon',
-        path: '/sub-menu-1'
+        name: i18n.t("Footer"),
+        icon: "fas fa-hammer nav-icon",
+        path: "/banner",
       },
-
       {
-        name: i18n.t('menusidebar.label.blank'),
-        icon: 'fas fa-cogs nav-icon',
-        path: '/sub-menu-2'
-      }
-    ]
+        name: i18n.t("Social Media"),
+        icon: "fas fa-cogs nav-icon",
+        path: "/specials",
+      },
+    ],
   },
   {
-    name: i18n.t('News Section'),
-    icon: 'far fa-caret-square-down nav-icon',
+    name: i18n.t("News Section"),
+    icon: "far fa-caret-square-down nav-icon",
     children: [
       {
-        name: i18n.t('menusidebar.label.subMenu'),
-        icon: 'fas fa-hammer nav-icon',
-        path: '/sub-menu-1'
+        name: i18n.t("Upcoming"),
+        icon: "fas fa-hammer nav-icon",
+        path: "/banner",
       },
-
       {
-        name: i18n.t('menusidebar.label.blank'),
-        icon: 'fas fa-cogs nav-icon',
-        path: '/sub-menu-2'
-      }
-    ]
+        name: i18n.t("Top Deals"),
+        icon: "fas fa-cogs nav-icon",
+        path: "/specials",
+      },
+      {
+        name: i18n.t("Ratings"),
+        icon: "fas fa-hammer nav-icon",
+        path: "/banner",
+      },
+      {
+        name: i18n.t("Best Sellers"),
+        icon: "fas fa-cogs nav-icon",
+        path: "/specials",
+      },
+    ],
   },
-
 ];
 
 const StyledBrandImage = styled(PfImage)`
@@ -183,11 +212,11 @@ const MenuSidebar = () => {
           <SidebarSearch />
         </div>
 
-        <nav className="mt-2" style={{overflowY: 'hidden'}}>
+        <nav className="mt-2" style={{ overflowY: "hidden" }}>
           <ul
             className={`nav nav-pills nav-sidebar flex-column${
-              menuItemFlat ? ' nav-flat' : ''
-            }${menuChildIndent ? ' nav-child-indent' : ''}`}
+              menuItemFlat ? " nav-flat" : ""
+            }${menuChildIndent ? " nav-child-indent" : ""}`}
             role="menu"
           >
             {MENU.map((menuItem: IMenuItem) => (
