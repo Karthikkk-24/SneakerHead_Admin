@@ -1,11 +1,11 @@
-import React from 'react';
-import {useSelector} from 'react-redux';
-import {Link} from 'react-router-dom';
-import {MenuItem} from '@components';
-import {PfImage} from '@profabric/react-components';
-import styled from 'styled-components';
-import {SidebarSearch} from '@app/components/sidebar-search/SidebarSearch';
+import { SidebarSearch } from '@app/components/sidebar-search/SidebarSearch';
 import i18n from '@app/utils/i18n';
+import { MenuItem } from '@components';
+import { PfImage } from '@profabric/react-components';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 export interface IMenuItem {
   name: string;
@@ -26,7 +26,40 @@ export const MENU: IMenuItem[] = [
     path: '/blank'
   },
   {
-    name: i18n.t('menusidebar.label.mainMenu'),
+    name: i18n.t('Landing Page'),
+    icon: 'far fa-caret-square-down nav-icon',
+    children: [
+      {
+        name: i18n.t('Banners'),
+        icon: 'fas fa-hammer nav-icon',
+        path: '/banner'
+      },
+      {
+        name: i18n.t('Specials'),
+        icon: 'fas fa-cogs nav-icon',
+        path: '/specials'
+      }
+    ]
+  },
+  {
+    name: i18n.t('Product Section'),
+    icon: 'far fa-caret-square-down nav-icon',
+    children: [
+      {
+        name: i18n.t('Categories'),
+        icon: 'fas fa-hammer nav-icon',
+        path: '/sub-menu-1'
+      },
+
+      {
+        name: i18n.t('menusidebar.label.blank'),
+        icon: 'fas fa-cogs nav-icon',
+        path: '/sub-menu-2'
+      }
+    ]
+  },
+  {
+    name: i18n.t('Order Management'),
     icon: 'far fa-caret-square-down nav-icon',
     children: [
       {
@@ -41,7 +74,59 @@ export const MENU: IMenuItem[] = [
         path: '/sub-menu-2'
       }
     ]
-  }
+  },
+  {
+    name: i18n.t('User Management'),
+    icon: 'far fa-caret-square-down nav-icon',
+    children: [
+      {
+        name: i18n.t('menusidebar.label.subMenu'),
+        icon: 'fas fa-hammer nav-icon',
+        path: '/sub-menu-1'
+      },
+
+      {
+        name: i18n.t('menusidebar.label.blank'),
+        icon: 'fas fa-cogs nav-icon',
+        path: '/sub-menu-2'
+      }
+    ]
+  },
+  {
+    name: i18n.t('Link Management'),
+    icon: 'far fa-caret-square-down nav-icon',
+    children: [
+      {
+        name: i18n.t('menusidebar.label.subMenu'),
+        icon: 'fas fa-hammer nav-icon',
+        path: '/sub-menu-1'
+      },
+
+      {
+        name: i18n.t('menusidebar.label.blank'),
+        icon: 'fas fa-cogs nav-icon',
+        path: '/sub-menu-2'
+      }
+    ]
+  },
+  {
+    name: i18n.t('News Section'),
+    icon: 'far fa-caret-square-down nav-icon',
+    children: [
+      {
+        name: i18n.t('menusidebar.label.subMenu'),
+        icon: 'fas fa-hammer nav-icon',
+        path: '/sub-menu-1'
+      },
+
+      {
+        name: i18n.t('menusidebar.label.blank'),
+        icon: 'fas fa-cogs nav-icon',
+        path: '/sub-menu-2'
+      }
+    ]
+  },
+
 ];
 
 const StyledBrandImage = styled(PfImage)`

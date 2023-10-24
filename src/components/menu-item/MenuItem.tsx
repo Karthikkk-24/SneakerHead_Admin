@@ -2,10 +2,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/interactive-supports-focus */
-import React, {useEffect, useState} from 'react';
-import {NavLink, useNavigate, useLocation, Location} from 'react-router-dom';
-import {useTranslation} from 'react-i18next';
-import {IMenuItem} from '@app/modules/main/menu-sidebar/MenuSidebar';
+import { IMenuItem } from '@app/modules/main/menu-sidebar/MenuSidebar';
+import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Location, NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 const MenuItem = ({menuItem}: {menuItem: IMenuItem}) => {
   const [t] = useTranslation();

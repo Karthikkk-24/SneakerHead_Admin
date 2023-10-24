@@ -1,28 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import Main from '@modules/main/Main';
-import Login from '@modules/login/Login';
-import Register from '@modules/register/Register';
-import ForgetPassword from '@modules/forgot-password/ForgotPassword';
-import RecoverPassword from '@modules/recover-password/RecoverPassword';
 import { useWindowSize } from '@app/hooks/useWindowSize';
-import { calculateWindowSize } from '@app/utils/helpers';
-import { useDispatch, useSelector } from 'react-redux';
 import { setWindowSize } from '@app/store/reducers/ui';
+import { calculateWindowSize } from '@app/utils/helpers';
+import ForgetPassword from '@modules/forgot-password/ForgotPassword';
+import Login from '@modules/login/Login';
+import Main from '@modules/main/Main';
+import RecoverPassword from '@modules/recover-password/RecoverPassword';
+import Register from '@modules/register/Register';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
-import Dashboard from '@pages/Dashboard';
+import Banner from '@pages/Banner';
 import Blank from '@pages/Blank';
+import Dashboard from '@pages/Dashboard';
 import SubMenu from '@pages/SubMenu';
 import Profile from '@pages/profile/Profile';
 
-import PublicRoute from './routes/PublicRoute';
 import PrivateRoute from './routes/PrivateRoute';
+import PublicRoute from './routes/PublicRoute';
 import { setAuthentication } from './store/reducers/auth';
 import {
-  GoogleProvider,
-  getAuthStatus,
-  getFacebookLoginStatus,
+    GoogleProvider,
+    getAuthStatus,
+    getFacebookLoginStatus,
 } from './utils/oidc-providers';
 
 declare const FB: any;
@@ -87,6 +88,7 @@ const App = () => {
             <Route path="/sub-menu-2" element={<Blank />} />
             <Route path="/sub-menu-1" element={<SubMenu />} />
             <Route path="/blank" element={<Blank />} />
+            <Route path="/banner" element={<Banner />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/" element={<Dashboard />} />
           </Route>
