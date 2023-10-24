@@ -34,7 +34,7 @@ import UserNotification from '@pages/UserNotification';
 import Users from '@pages/Users';
 
 import Blank from '@pages/Blank';
-import SubMenu from '@pages/SubMenu';
+// import SubMenu from '@pages/SubMenu';
 import Profile from '@pages/profile/Profile';
 
 import { User } from 'oidc-client-ts';
@@ -107,7 +107,7 @@ const App = () => {
         <Route path="/" element={<PrivateRoute />}>
           <Route path="/" element={<Main />}>
             <Route path="/sub-menu-2" element={<Blank />} />
-            <Route path="/sub-menu-1" element={<SubMenu />} />
+            {/* <Route path="/sub-menu-1" element={<SubMenu />} /> */}
             <Route path="/blank" element={<Blank />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/" element={<Dashboard />} />
