@@ -1,8 +1,18 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { ContentHeader } from '@components';
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
 
 const Blank = () => {
+    const [categoryName, setCategoryName] = useState('');
+    const handleSubmit =async () => {
+        try {
+            await axios.post('/api/addCategory', { categoryName });
+        } catch (error) {
+            console.log('Error: ', error);
+        }
+    }
+
   return (
     <div>
       <ContentHeader title="Category" />
@@ -30,7 +40,7 @@ const Blank = () => {
               </div>
             </div>
             <div className="card-footer">
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Submit</button>
             </div>
           </div>
           <div className="card">
