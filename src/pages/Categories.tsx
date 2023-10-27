@@ -3,7 +3,7 @@ import { ContentHeader } from '@components';
 import axios from 'axios';
 import React, { useState } from 'react';
 
-const Blank = () => {
+const Categories = () => {
     const [categoryName, setCategoryName] = useState(''); // Use state hook to manage categoryName
 
     const handleSubmit = async () => {
@@ -16,7 +16,7 @@ const Blank = () => {
     }
 
     const handleCategoryNameChange = (e) => {
-        setCategoryName(e.target.value); // Update categoryName state on input change
+        setCategoryName(e.target.value);
     }
 
     return (
@@ -83,4 +83,4 @@ const Blank = () => {
     );
 };
 
-export default Blank;
+export default Categories;

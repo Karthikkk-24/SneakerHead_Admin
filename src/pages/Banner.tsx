@@ -2,7 +2,7 @@
 import { ContentHeader } from "@components";
 import React from "react";
 
-const Blank = () => {
+const Banner = () => {
   return (
     <div>
       <ContentHeader title="Banner" />
@@ -70,4 +70,4 @@ const Blank = () => {
   );
 };
 
-export default Blank;
+export default Banner;

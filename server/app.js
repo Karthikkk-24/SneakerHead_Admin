@@ -27,17 +27,17 @@ function getCurrentDateTime() {
 const currentDateTime = getCurrentDateTime();
 console.log(currentDateTime);
 
-// Define a route to add a category to your MySQL database
+
 app.post('/api/addCategory', (req, res) => {
     console.log(req);
 
     // console.log(res);
     // const { category } = req.body;
 
-    // if (!category) {
-    //     return res.status(400).json({ message: 'Category name is required' });
-    // }
     const categoryName = req.body.categoryName;
+    if (!categoryName) {
+        return res.status(400).json({ message: 'Category name is required' });
+    }
 
     const sql = 'INSERT INTO tbl_category (category_name, updated_at) VALUES (?, ?)';
 

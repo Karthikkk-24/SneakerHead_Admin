@@ -2,7 +2,7 @@
 import { ContentHeader } from '@components';
 import React from 'react';
 
-const Blank = () => {
+const Footer = () => {
   return (
     <div>
       <ContentHeader title="Banner" />
@@ -43,4 +43,4 @@ const Blank = () => {
   );
 };
 
-export default Blank;
+export default Footer;

@@ -2,7 +2,7 @@
 import { ContentHeader } from "@components";
 import React from "react";
 
-const Blank = () => {
+const Accessories = () => {
   return (
     <div>
       <ContentHeader title="Accessories" />
@@ -96,4 +96,4 @@ const Blank = () => {
   );
 };
 
-export default Blank;
+export default Accessories;
