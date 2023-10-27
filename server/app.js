@@ -31,23 +31,24 @@ console.log(currentDateTime);
 app.post('/api/addCategory', (req, res) => {
     console.log(req);
 
-    console.log(res);
+    // console.log(res);
     // const { category } = req.body;
 
     // if (!category) {
     //     return res.status(400).json({ message: 'Category name is required' });
     // }
+    const categoryName = req.body.categoryName;
 
-    // const sql = 'INSERT INTO tbl_category (category_name, updated_at) VALUES (?)';
+    const sql = 'INSERT INTO tbl_category (category_name, updated_at) VALUES (?, ?)';
 
-    // db.query(sql, [category], (err, results) => {
-    //     if (err) {
-    //         console.error('Error adding category:', err);
-    //         return res.status(500).json({ message: 'An error occurred while adding the category' });
-    //     }
+    db.query(sql, [categoryName, currentDateTime], (err, results) => {
+        if (err) {
+            console.error('Error adding category:', err);
+            return res.status(500).json({ message: 'An error occurred while adding the category' });
+        }
 
-    //     return res.status(200).json({ message: 'Category added successfully' });
-    // });
+        return res.status(200).json({ message: 'Category added successfully' });
+    });
 });
 
 app.listen(port, () => {
