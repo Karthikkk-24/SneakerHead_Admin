@@ -51,6 +51,20 @@ app.post('/api/addCategory', (req, res) => {
     });
 });
 
+app.get('/api/getCategories', async (req, res) => {
+    console.log('called');
+    const sql = 'SELECT * FROM tbl_category';
+
+    try {
+        const results = await db.query(sql);
+        return res.status(200).json(results);
+    } catch (error) {
+        console.error('Error retrieving categories:', error);
+        return res.status(500).json({ message: 'An error occurred while retrieving categories' });
+    }
+});
+
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
