@@ -29,7 +29,7 @@ console.log(currentDateTime);
 
 
 app.post('/api/addCategory', (req, res) => {
-    console.log(req);
+    // console.log(req);
 
     // console.log(res);
     // const { category } = req.body;
@@ -52,7 +52,6 @@ app.post('/api/addCategory', (req, res) => {
 });
 
 app.get('/api/getCategories', async (req, res) => {
-    console.log('called');
     const sql = 'SELECT * FROM tbl_category';
 
     try {
@@ -61,6 +60,42 @@ app.get('/api/getCategories', async (req, res) => {
     } catch (error) {
         console.error('Error retrieving categories:', error);
         return res.status(500).json({ message: 'An error occurred while retrieving categories' });
+    }
+});
+
+app.get('/api/getSubCategories', async (req, res) => {
+    const sql = 'SELECT * FROM tbl_subcategory';
+
+    try {
+        const results = await db.query(sql);
+        return res.status(200).json(results);
+    } catch (error) {
+        console.error('Error retrieving categories:', error);
+        return res.status(500).json({ message: 'An error occurred while retrieving sub-categories' });
+    }
+});
+
+app.get('/app/getProducts', async (req, res) => {
+    const sql = 'SELECT * FROM tbl_products';
+
+    try {
+        const results = await db.query(sql);
+        return res.setMaxListeners(200).json(results);
+    } catch (error) {
+        console.log('Error retrieving products:', error);
+        return res.status(500).json({ message: 'An error occurred while retrieving products' });
+    }
+});
+
+app.get('/app/getAccessories', async (req, res) => {
+    const sql = 'SELECT * FROM tbl_accessories';
+
+    try {
+        const results = await db.query(sql);
+        return res.setMaxListeners(200).json(results);
+    } catch (error) {
+        console.log('Error retrieving accessories:', error);
+        return res.status(500).json({ message: 'An error occurred while retrieving accessories' });
     }
 });
 
