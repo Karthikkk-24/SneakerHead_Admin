@@ -64,7 +64,7 @@ app.get('/api/getCategories', async (req, res) => {
 });
 
 app.get('/api/getSubCategories', async (req, res) => {
-    const sql = 'SELECT * FROM tbl_subcategory';
+    const sql = 'SELECT sc.*, c.category_name FROM `tbl_subcategory` sc LEFT JOIN `tbl_category` c ON sc.category_id = c.id;';
 
     try {
         const results = await db.query(sql);
@@ -76,7 +76,7 @@ app.get('/api/getSubCategories', async (req, res) => {
 });
 
 app.get('/app/getProducts', async (req, res) => {
-    const sql = 'SELECT * FROM tbl_products';
+    const sql = 'SELECT p.*, sc.subcategory_name, c.category_name FROM `tbl_products` p LEFT JOIN tbl_subcategory sc ON p.subcategory_id = sc.id LEFT JOIN tbl_category c ON p.category_id = c.id;';
 
     try {
         const results = await db.query(sql);
@@ -88,7 +88,7 @@ app.get('/app/getProducts', async (req, res) => {
 });
 
 app.get('/app/getAccessories', async (req, res) => {
-    const sql = 'SELECT * FROM tbl_accessories';
+    const sql = 'SELECT a.*, p.product_name FROM `tbl_accessories` a LEFT JOIN `tbl_products` p ON a.product_id = p.id;';
 
     try {
         const results = await db.query(sql);
