@@ -51,6 +51,42 @@ app.post('/api/addCategory', (req, res) => {
     });
 });
 
+app.post('/api/addSubCategory', (req, res) => {
+    const { subcategoryName, categoryId } = req.body;
+    if (!subcategoryName || !categoryId) {
+        return res.status(400).json({ message: 'Subcategory name and Category ID are required' });
+    }
+
+    const sql = 'INSERT into tbl_subcategory (subcategory_name, category_id, updated_at) VALUES (?, ?, ?)';
+
+    db.query(sql, [subcategoryName, categoryId, currentDateTime], (err, results) => {
+        if (err) {
+            console.error('Error adding subcategory:', err);
+            return res.status(500).json({ message: 'An error occurred while adding the subcategory' });
+        }
+
+        return res.status(200).json({ message: 'Subcategory added successfully' });
+    })
+});
+
+app.post('/api/addProduct', (req, res) => {
+    const { productName, categoryId, subcategoryId, description, price } = req.body;
+    if (!productName || !categoryId || !subcategoryId || !description || !price) {
+        return res.status(400).json({ message: 'Product name, category ID, subcategory ID, description, and price are required' });
+    }
+
+    const sql = 'INSERT INTO tbl_product (product_name, category_id, subcategory_id, description, price, updated_at) VALUES (?, ?, ?, ?, ?, ?)';
+
+    db.query(sql, [productName, categoryId, subcategoryId, description, price, currentDateTime], (err, results) => {
+        if (err) {
+            console.error('Error adding product:', err);
+            return res.status(500).json({ message: 'An error occurred while adding the product' });
+        }
+    })
+
+    return res.status(200).json({ message: 'Product added successfully' });
+});
+
 app.get('/api/getCategories', async (req, res) => {
     const sql = 'SELECT * FROM tbl_category';
 
