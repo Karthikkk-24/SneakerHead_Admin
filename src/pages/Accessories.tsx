@@ -1,8 +1,29 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { ContentHeader } from "@components";
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const Accessories = () => {
+
+    const [accessories, setAccessories] = useState([]);
+
+    useEffect(() => {
+        fetchAccessories();
+    });
+
+    function fetchAccessories() {
+        axios
+          .get("http://localhost:3000/api/getAccessories")
+          .then((response) => {
+            console.log(response.data[0]);
+            setAccessories(response.data[0]);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+    }
+
+
   return (
     <div>
       <ContentHeader title="Accessories" />
@@ -85,7 +106,17 @@ const Accessories = () => {
                       <th>Actions</th>
                     </tr>
                   </thead>
-                  <tbody></tbody>
+                  <tbody>
+                    {accessories.map((accessory, index) => (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>{accessory.product_name}</td>
+                        <td>{accessory.accessories_name}</td>
+                        <td>{accessory.accessories_price}</td>
+                        <td>Actions</td>
+                      </tr>
+                    ))}
+                  </tbody>
                 </table>
               </div>
             </div>
