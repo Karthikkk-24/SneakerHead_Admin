@@ -1,8 +1,26 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { ContentHeader } from "@components";
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
-const Blank = () => {
+const SubCategory = () => {
+  const [subcategories, setSubCategories] = useState([]);
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  function fetchCategories() {
+    axios
+      .get("http://localhost:3000/api/getSubCategories")
+      .then((response) => {
+        console.log(response.data[0]);
+        setSubCategories(response.data[0]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
   return (
     <div>
       <ContentHeader title="Sub Category" />
@@ -72,7 +90,16 @@ const Blank = () => {
                       <th>Actions</th>
                     </tr>
                   </thead>
-                  <tbody></tbody>
+                  <tbody>
+                    {subcategories.map((subcategory, index) => (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>{subcategory.category_name}</td>
+                        <td>{subcategory.subcategory_name}</td>
+                        <td>Actions</td>
+                      </tr>
+                    ))}
+                  </tbody>
                 </table>
               </div>
             </div>
@@ -83,4 +110,4 @@ const Blank = () => {
   );
 };
 
-export default Blank;
+export default SubCategory;
