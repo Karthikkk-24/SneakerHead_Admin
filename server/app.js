@@ -87,6 +87,18 @@ app.post('/api/addProduct', (req, res) => {
     return res.status(200).json({ message: 'Product added successfully' });
 });
 
+app.get('/api/getBanners', async (req, res) => {
+    const sql = 'SELECT * FROM tbl_banner';
+
+    try {
+        const results = await db.query(sql);
+        return res.status(200).json(results);
+    } catch (error) {
+        console.error('Error retrieving banners:', error);
+        return res.status(500).json({ message: 'An error occurred while retrieving banners' });
+    }
+});
+
 app.get('/api/getCategories', async (req, res) => {
     const sql = 'SELECT * FROM tbl_category';
 

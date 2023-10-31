@@ -1,8 +1,27 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { ContentHeader } from "@components";
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const Banner = () => {
+  const [banners, setBanners] = useState([]);
+
+  useEffect(() => {
+    fetchBanner();
+  }, []);
+
+  function fetchBanner() {
+    axios
+      .get("http://localhost:3000/api/getBanners")
+      .then((response) => {
+        console.log(response.data[0]);
+        setBanners(response.data[0]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   return (
     <div>
       <ContentHeader title="Banner" />
@@ -58,7 +77,13 @@ const Banner = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr></tr>
+                    {banners.map((banner, index) => (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td><img src={banner.banner_location} alt="" /></td>
+                        <td>Actions</td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
