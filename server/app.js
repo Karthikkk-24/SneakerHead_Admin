@@ -111,7 +111,7 @@ app.get('/api/getSubCategories', async (req, res) => {
     }
 });
 
-app.get('/app/getProducts', async (req, res) => {
+app.get('/api/getProducts', async (req, res) => {
     const sql = 'SELECT p.*, sc.subcategory_name, c.category_name FROM `tbl_products` p LEFT JOIN tbl_subcategory sc ON p.subcategory_id = sc.id LEFT JOIN tbl_category c ON p.category_id = c.id;';
 
     try {
@@ -123,7 +123,7 @@ app.get('/app/getProducts', async (req, res) => {
     }
 });
 
-app.get('/app/getAccessories', async (req, res) => {
+app.get('/api/getAccessories', async (req, res) => {
     const sql = 'SELECT a.*, p.product_name FROM `tbl_accessories` a LEFT JOIN `tbl_products` p ON a.product_id = p.id;';
 
     try {

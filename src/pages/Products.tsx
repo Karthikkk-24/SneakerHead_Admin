@@ -1,8 +1,27 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { ContentHeader } from "@components";
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const Products = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetchProducts();
+  });
+
+  function fetchProducts() {
+    axios
+      .get("http://localhost:3000/api/getProducts")
+      .then((response) => {
+        console.log(response.data[0]);
+        setProducts(response.data[0]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   return (
     <div>
       <ContentHeader title="Products" />
@@ -85,7 +104,17 @@ const Products = () => {
                       <th>Actions</th>
                     </tr>
                   </thead>
-                  <tbody></tbody>
+                  <tbody>
+                    {products.map((product, index) => (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>{product.category_name}</td>
+                        <td>{product.subcategory_name}</td>
+                        <td>{product.product_name}</td>
+                        <td>Actions</td>
+                      </tr>
+                    ))}
+                  </tbody>
                 </table>
               </div>
             </div>
