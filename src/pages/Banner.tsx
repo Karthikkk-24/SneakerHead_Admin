@@ -4,7 +4,27 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 const Banner = () => {
+  const [bannerLocation, setBannerLocation] = useState("");
+  const [filename, setBannerFileName] = useState("");
   const [banners, setBanners] = useState([]);
+
+  const handleSubmit = async () => {
+    try {
+       
+      await axios.post("http://localhost:3000/api/uploadBanner", {
+        bannerLocation,
+        filename
+      });
+      window.location.reload();
+    } catch (error) {
+      console.log("Error: ", error);
+    }
+  };
+
+  const handleBannerChange = (e) => {
+    setBannerLocation(e.target.value);
+    setBannerFileName(e.target.files[0].name);
+  };
 
   useEffect(() => {
     fetchBanner();
@@ -49,6 +69,8 @@ const Banner = () => {
                 </label>
                 <input
                   type="file"
+                  value={bannerLocation}
+                  onChange={handleBannerChange}
                   className="form-control"
                   name="banner_image"
                   id="bannerImage"
@@ -56,7 +78,7 @@ const Banner = () => {
               </div>
             </div>
             <div className="card-footer">
-              <button type="submit" className="btn btn-primary">
+              <button type="submit" onClick={handleSubmit} className="btn btn-primary">
                 Submit
               </button>
             </div>
@@ -80,7 +102,13 @@ const Banner = () => {
                     {banners.map((banner, index) => (
                       <tr key={index}>
                         <td>{index + 1}</td>
-                        <td><img style={{width: '400px', height: '200px'}} src={banner.banner_location} alt="" /></td>
+                        <td>
+                          <img
+                            style={{ width: "400px", height: "200px" }}
+                            src={banner.banner_location}
+                            alt=""
+                          />
+                        </td>
                         <td>{banner.updated_at}</td>
                         <td>Actions</td>
                       </tr>

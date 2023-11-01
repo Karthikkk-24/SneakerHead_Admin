@@ -2,7 +2,8 @@
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
-import db from './config/db.js'; // Import the database connection
+import multer from 'multer';
+import db from './config/db.js';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -14,7 +15,7 @@ function getCurrentDateTime() {
     const now = new Date();
 
     const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, '0'); // Month is zero-based, so add 1.
+    const month = String(now.getMonth() + 1).padStart(2, '0');
     const day = String(now.getDate()).padStart(2, '0');
     const hours = String(now.getHours()).padStart(2, '0');
     const minutes = String(now.getMinutes()).padStart(2, '0');
@@ -85,6 +86,42 @@ app.post('/api/addProduct', (req, res) => {
     })
 
     return res.status(200).json({ message: 'Product added successfully' });
+});
+
+const storage = multer.diskStorage({
+    destination: (req, file, callback) => {
+        callback(null, 'uploads/banners/'); // Store uploaded files in the "uploads" folder
+    },
+    filename: (req, file, callback) => {
+        callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    },
+});
+
+const upload = multer({ storage: storage });
+
+// Define a POST route to handle file uploads
+app.post('/api/uploadBanner', upload.single('banner_image'), (req, res) => {
+    // console.log(req)
+    if (!req.body) {
+        // console.log('hello')
+        return res.status(400).json({ message: 'No file uploaded' });
+    }
+
+    // Insert file details (location and filename) into the database
+    const { bannerLocation, filename } = req.body;
+    console.log(bannerLocation);
+    console.log(filename);
+    const location = `uploads/banners/${filename}`; // Adjust the location path as needed
+
+    const sql = 'INSERT INTO tbl_banner (banner_image, banner_location) VALUES (?, ?)';
+    db.query(sql, [filename, location], (err, result) => {
+        if (err) {
+            console.error('Error inserting into database:', err);
+            return res.status(500).json({ message: 'Error inserting into database' });
+        }
+
+        return res.status(200).json({ message: 'File uploaded and details saved to the database' });
+    });
 });
 
 app.get('/api/getBanners', async (req, res) => {
