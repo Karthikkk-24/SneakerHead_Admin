@@ -80,7 +80,8 @@ const Banner = () => {
                     {banners.map((banner, index) => (
                       <tr key={index}>
                         <td>{index + 1}</td>
-                        <td><img src={banner.banner_location} alt="" /></td>
+                        <td><img style={{width: '400px', height: '200px'}} src={banner.banner_location} alt="" /></td>
+                        <td>{banner.updated_at}</td>
                         <td>Actions</td>
                       </tr>
                     ))}
