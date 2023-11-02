@@ -2,7 +2,9 @@
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
+import fs from 'fs';
 import multer from 'multer';
+import path from 'path';
 import db from './config/db.js';
 
 const app = express();
@@ -90,12 +92,14 @@ app.post('/api/addProduct', (req, res) => {
 
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
-        callback(null, 'uploads/banners/'); // Store uploaded files in the "uploads" folder
+        console.log('called');
+        callback(null, 'public/uploads/banners'); // Store uploaded files in the "public/uploads/banners" folder
     },
     filename: (req, file, callback) => {
         callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
     },
 });
+
 
 const upload = multer({ storage: storage });
 
@@ -109,18 +113,28 @@ app.post('/api/uploadBanner', upload.single('banner_image'), (req, res) => {
 
     // Insert file details (location and filename) into the database
     const { bannerLocation, filename } = req.body;
-    console.log(bannerLocation);
-    console.log(filename);
-    const location = `uploads/banners/${filename}`; // Adjust the location path as needed
+    // console.log(bannerLocation);
+    // console.log(filename);
+    const location = `uploads/banners/${filename}`;
 
     const sql = 'INSERT INTO tbl_banner (banner_image, banner_location) VALUES (?, ?)';
-    db.query(sql, [filename, location], (err, result) => {
+    db.query(sql, [filename, location, `uploads/banners/${req.body.filename}`], (err, result) => {
+        console.log('data inserted');
         if (err) {
             console.error('Error inserting into database:', err);
             return res.status(500).json({ message: 'Error inserting into database' });
         }
+        // return res.status(200).json({ message: 'File uploaded and details saved to the database' });
 
-        return res.status(200).json({ message: 'File uploaded and details saved to the database' });
+        fs.copyFile(bannerLocation, `public/uploads/banners/${filename}`, (err) => {
+            console.log('error');
+            if (err) {
+                console.error('Error copying file locally:', err);
+                return res.status(500).json({ message: 'Error copying file locally' });
+            }
+
+            return res.status(200).json({ message: 'File uploaded and details saved to the database' });
+        });
     });
 });
 
