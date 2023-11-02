@@ -103,7 +103,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// Define a POST route to handle file uploads
 app.post('/api/uploadBanner', upload.single('banner_image'), (req, res) => {
     // console.log(req)
     if (!req.body) {
@@ -111,7 +110,7 @@ app.post('/api/uploadBanner', upload.single('banner_image'), (req, res) => {
         return res.status(400).json({ message: 'No file uploaded' });
     }
 
-    // Insert file details (location and filename) into the database
+    
     const { bannerLocation, filename } = req.body;
     // console.log(bannerLocation);
     // console.log(filename);
