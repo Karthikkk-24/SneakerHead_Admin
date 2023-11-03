@@ -110,7 +110,7 @@ const Banner = () => {
                           />
                         </td>
                         <td>{banner.updated_at}</td>
-                        <td>Actions</td>
+                        <td><button className="btn btn-outline-primary"><i className="fa-regular fa-pen-to-square"></i></button>&emsp;<button className="btn btn-outline-danger"><i className="fa-regular fa-trash-can"></i></button></td>
                       </tr>
                     ))}
                   </tbody>

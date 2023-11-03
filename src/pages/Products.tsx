@@ -111,7 +111,7 @@ const Products = () => {
                         <td>{product.category_name}</td>
                         <td>{product.subcategory_name}</td>
                         <td>{product.product_name}</td>
-                        <td>Actions</td>
+                        <td><button className="btn btn-outline-primary"><i className="fa-regular fa-pen-to-square"></i></button>&emsp;<button className="btn btn-outline-danger"><i className="fa-regular fa-trash-can"></i></button></td>
                       </tr>
                     ))}
                   </tbody>

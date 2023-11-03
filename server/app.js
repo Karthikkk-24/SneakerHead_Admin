@@ -112,7 +112,7 @@ app.post('/api/uploadBanner', upload.single('banner_image'), (req, res) => {
 
     
     const { bannerLocation, filename } = req.body;
-    // console.log(bannerLocation);
+    console.log(bannerLocation);
     // console.log(filename);
     const location = `uploads/banners/${filename}`;
 
