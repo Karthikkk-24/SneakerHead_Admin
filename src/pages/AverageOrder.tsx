@@ -3,7 +3,7 @@ import { ContentHeader } from "@components";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-const Accessories = () => {
+const AverageOrder = () => {
 
     const [accessories, setAccessories] = useState([]);
 
@@ -26,7 +26,7 @@ const Accessories = () => {
 
   return (
     <div>
-      <ContentHeader title="Accessories" />
+      <ContentHeader title="Average Order" />
       <section className="content">
         <div className="container-fluid">
           <div className="card">
@@ -92,7 +92,7 @@ const Accessories = () => {
           </div>
           <div className="card">
             <div className="card-header">
-              <div className="card-title">Accessories List</div>
+              <div className="card-title">Average Order List</div>
             </div>
             <div className="card-body">
               <div className="table-responsive">
@@ -127,4 +127,4 @@ const Accessories = () => {
   );
 };
 
-export default Accessories;
+export default AverageOrder;
