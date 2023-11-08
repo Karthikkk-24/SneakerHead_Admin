@@ -54,6 +54,25 @@ app.post('/api/addCategory', (req, res) => {
     });
 });
 
+app.post('/api/addSocialMedia', (req, res) => {
+    // console.log(req.body);
+    const {facebookUsername, facebookLink, twitterUsername, twitterLink, instagramUsername, instagramLink, websiteName, websiteUrl} = req.body;
+    // if (!categoryName) {
+    //     return res.status(400).json({ message: 'Category name is required' });
+    // }
+
+    const sql = 'INSERT INTO tbl_links (facebook_username, facebook_link, twitter_username, twitter_link, instagram_username, instagram_link, website_name, website_url, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+
+    db.query(sql, [facebookUsername, facebookLink, twitterUsername, twitterLink, instagramUsername, instagramLink, websiteName, websiteUrl, currentDateTime], (err, results) => {
+        if (err) {
+            console.error('Error adding links:', err);
+            return res.status(500).json({ message: 'An error occurred while adding the category' });
+        }
+ 
+        return res.status(200).json({ message: 'Links added successfully' });
+    });
+});
+
 app.post('/api/addSubCategory', (req, res) => {
     const { subcategoryName, categoryId } = req.body;
     if (!subcategoryName || !categoryId) {
@@ -194,6 +213,18 @@ app.get('/api/getAccessories', async (req, res) => {
     } catch (error) {
         console.log('Error retrieving accessories:', error);
         return res.status(500).json({ message: 'An error occurred while retrieving accessories' });
+    }
+});
+
+app.get('/api/getLinks', async (req, res) => {
+    const sql = 'SELECT * FROM tbl_links';
+
+    try {
+        const results = await db.query(sql);
+        return res.status(200).json(results);
+    } catch (error) {
+        console.error('Error retrieving categories:', error);
+        return res.status(500).json({ message: 'An error occurred while retrieving categories' });
     }
 });
 

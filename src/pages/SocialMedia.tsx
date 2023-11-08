@@ -4,19 +4,38 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 const SocialMedia = () => {
+    const [facebookUsername, setFacebookUsername] = useState("");
+    const [facebookLink, setFacebookLink] = useState("");
+    const [twitterUsername, setTwitterUsername] = useState("");
+    const [twitterLink, setTwitterLink] = useState("");
+    const [instagramUsername, setInstagramUsername] = useState("");
+    const [instagramLink, setInstagramLink] = useState("");
+    const [websiteName, setWebsiteName] = useState("");
+    const [websiteUrl, setWebsiteUrl] = useState("");
 
-    const [accessories, setAccessories] = useState([]);
+    const [links, setLinks] = useState([]);
 
     useEffect(() => {
-        fetchAccessories();
-    });
+        fetchSocialLinks();
+    }, []);
 
-    function fetchAccessories() {
+    const handleSubmit = async () => {
+    try {
+      await axios.post("http://localhost:3000/api/addSocialMedia", {
+        facebookUsername, facebookLink, twitterUsername, twitterLink, instagramUsername, instagramLink, websiteName, websiteUrl
+      });
+      window.location.reload();
+    } catch (error) {
+      console.log("Error: ", error);
+    }
+  };
+
+    function fetchSocialLinks() {
         axios
-          .get("http://localhost:3000/api/getAccessories")
+          .get("http://localhost:3000/api/getLinks")
           .then((response) => {
             console.log(response.data[0]);
-            setAccessories(response.data[0]);
+            setLinks(response.data[0]);
           })
           .catch((error) => {
             console.log(error);
@@ -48,19 +67,20 @@ const SocialMedia = () => {
               <div className="row">
                 <div className="col-md-6 form-group">
                   <label htmlFor="categoryName" className="form-label">
-                    Facebook
+                    Facebook Username
                   </label>
-                  <input type="text" className="form-control" />
+                  <input type="text" value={facebookUsername} onChange={(e) => setFacebookUsername(e.target.value)} placeholder="Facebook Username" className="form-control" />
                 </div>
                 <div className="col-md-6 form-group">
                   <label htmlFor="AccessoryName" className="form-label">
-                    Facebook Username
+                    Facebook Link
                   </label>
                   <input
                     type="text"
-                    name="accessory_name"
-                    id="AccessoryName"
-                    placeholder="Enter Accessories Name"
+                    name="facebook_link"
+                    value={facebookLink} onChange={(e) => setFacebookLink(e.target.value)}
+                    id="facebookLink"
+                    placeholder="Enter Facebook Link"
                     className="form-control"
                   />
                 </div>
@@ -68,7 +88,7 @@ const SocialMedia = () => {
                   <label htmlFor="categoryName" className="form-label">
                     Instagram Username
                   </label>
-                  <input type="text" className="form-control" />
+                  <input type="text" placeholder="Instagram Username" value={instagramUsername} onChange={(e) => setInstagramUsername(e.target.value)} className="form-control" />
                 </div>
                 <div className="col-md-6 form-group">
                   <label htmlFor="AccessoryName" className="form-label">
@@ -76,9 +96,9 @@ const SocialMedia = () => {
                   </label>
                   <input
                     type="text"
-                    name="accessory_name"
-                    id="AccessoryName"
-                    placeholder="Enter Accessories Name"
+                    name="instagram_link"
+                    id="instagramLink"
+                    placeholder="Enter Instagram Link" value={instagramLink} onChange={(e) => setInstagramLink(e.target.value)}
                     className="form-control"
                   />
                 </div>
@@ -86,7 +106,7 @@ const SocialMedia = () => {
                   <label htmlFor="categoryName" className="form-label">
                     Twitter Username
                   </label>
-                  <input type="text" className="form-control" />
+                  <input type="text" placeholder="Twitter Username" value={twitterUsername} onChange={(e) => setTwitterUsername(e.target.value)} className="form-control" />
                 </div>
                 <div className="col-md-6 form-group">
                   <label htmlFor="AccessoryName" className="form-label">
@@ -94,9 +114,9 @@ const SocialMedia = () => {
                   </label>
                   <input
                     type="text"
-                    name="accessory_name"
-                    id="AccessoryName"
-                    placeholder="Enter Accessories Name"
+                    name="twitter_link"
+                    id="twitterLink"
+                    placeholder="Enter Twitter Link" value={twitterLink} onChange={(e) => setTwitterLink(e.target.value)}
                     className="form-control"
                   />
                 </div>
@@ -104,7 +124,7 @@ const SocialMedia = () => {
                   <label htmlFor="categoryName" className="form-label">
                     Website Name
                   </label>
-                  <input type="text" className="form-control" />
+                  <input type="text" placeholder="Website Name" value={websiteName} onChange={(e) => setWebsiteName(e.target.value)} className="form-control" />
                 </div>
                 <div className="col-md-6 form-group">
                   <label htmlFor="AccessoryName" className="form-label">
@@ -112,16 +132,16 @@ const SocialMedia = () => {
                   </label>
                   <input
                     type="text"
-                    name="accessory_name"
-                    id="AccessoryName"
-                    placeholder="Enter Accessories Name"
+                    name="website_url"
+                    id="websiteUrl"
+                    placeholder="Enter Website Url" value={websiteUrl} onChange={(e) => setWebsiteUrl(e.target.value)}
                     className="form-control"
                   />
                 </div>
               </div>
             </div>
             <div className="card-footer">
-              <button type="submit" className="btn btn-primary">
+              <button type="submit" onClick={handleSubmit} className="btn btn-primary">
                 Submit
               </button>
             </div>
@@ -142,12 +162,13 @@ const SocialMedia = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {accessories.map((accessory, index) => (
+                    {links.map((link, index) => (
                       <tr key={index}>
                         <td>{index + 1}</td>
-                        <td>{accessory.product_name}</td>
-                        <td>{accessory.accessories_name}</td>
-                        <td>{accessory.accessories_price}</td>
+                        <td>{link.facebook_username}<br />{link.facebook_link}</td>
+                        <td>{link.instagram_username}<br />{link.instagram_link}</td>
+                        <td>{link.twitter_username}<br />{link.twitter_link}</td>
+                        <td>{link.website_name}<br />{link.website_url}</td>
                         <td><button className="btn btn-outline-primary"><i className="fa-regular fa-pen-to-square"></i></button>&emsp;<button className="btn btn-outline-danger"><i className="fa-regular fa-trash-can"></i></button></td>
                       </tr>
                     ))}
