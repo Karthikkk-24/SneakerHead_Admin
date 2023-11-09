@@ -156,8 +156,10 @@ const SocialMedia = () => {
                   <thead>
                     <tr>
                       <th>Sr. No</th>
-                      <th>Media Name</th>
-                      <th>Links</th>
+                      <th>Facebook</th>
+                      <th>Instagram</th>
+                      <th>Twitter</th>
+                      <th>Website</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
