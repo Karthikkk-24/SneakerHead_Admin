@@ -5,12 +5,12 @@ import React from 'react';
 const Orders = () => {
   return (
     <div>
-      <ContentHeader title="Banner" />
+      <ContentHeader title="Orders" />
       <section className="content">
         <div className="container-fluid">
           <div className="card">
             <div className="card-header">
-              <h3 className="card-title">Banner</h3>
+              <h3 className="card-title">Orders</h3>
               <div className="card-tools">
                 <button
                   type="button"
@@ -33,9 +33,22 @@ const Orders = () => {
               </div>
             </div>
             <div className="card-body">
-              Start creating your amazing application!
+              <div className="table-responsive">
+                    <table className="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Sr. No</th>
+                                <th>Order No</th>
+                                <th>Ordered By</th>
+                                <th>Order Date</th>
+                                <th>Delivery Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                    </table>
+              </div>
             </div>
-            <div className="card-footer">Footer</div>
           </div>
         </div>
       </section>
