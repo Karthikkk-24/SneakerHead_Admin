@@ -27,16 +27,16 @@ const UserNotification = () => {
                 <div className="col-md-12 row">
                     <div className="col-md-6 col-sm-12 form-group">
                         <label htmlFor="">Notification</label>
-                        <input type="text" className="form-control" placeholder="Notification" />
+                        <input type="text" className="form-control" placeholder="Enter Notification" />
                     </div>
                     <div className="col-md-6 col-sm-12 form-group">
                         <label htmlFor="">Description</label>
-                        <input type="text" className="form-control" placeholder="Description" />
+                        <input type="text" className="form-control" placeholder="Enter Description" />
                     </div>
                 </div>
             </div>
             <div className="card-footer">
-                <button className="btn btn-primary" type="Submit">Submit</button>
+                <button className="btn btn-primary" type="submit">Submit</button>
             </div>
           </div>
           <div className="card">
