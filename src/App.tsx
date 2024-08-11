@@ -5,7 +5,7 @@ import PublicRoute from './pages/PublicRoute';
 
 function App() {
     return (
-        <div className="bg-black w-screen min-h-screen">
+        <div className="bg-background w-screen min-h-screen">
             <Router>
                 <Routes>
                     <Route path="/" element={<PublicRoute />}>

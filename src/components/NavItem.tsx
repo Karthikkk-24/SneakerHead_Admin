@@ -5,10 +5,12 @@ export default function NavItem({
     title,
     path,
     active,
+    icon
 }: {
     title: string;
     path: string;
     active: boolean;
+    icon?: React.ReactNode
 }) {
     return (
         <Link
@@ -17,9 +19,14 @@ export default function NavItem({
                 active
                     ? 'bg-primary font-semibold rounded-lg text-background'
                     : 'text-white'
-            } flex items-center justify-start text-xl`}
+            } flex items-center justify-start text-xl gap-3`}
         >
-            {title}
+            <span>
+                {icon}
+            </span>
+            <span>
+                {title}
+            </span>
         </Link>
     );
 }
@@ -28,10 +35,12 @@ NavItem.propTypes = {
     title: PropTypes.string,
     path: PropTypes.string,
     active: PropTypes.bool,
+    icon: PropTypes.node
 };
 
 NavItem.defaultProps = {
     title: '',
     path: '',
     active: false,
+    icon: null
 };

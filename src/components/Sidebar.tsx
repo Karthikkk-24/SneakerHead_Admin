@@ -1,15 +1,25 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import { AiFillHome } from 'react-icons/ai';
+import NavDropdown from './NavDropdown';
 import NavItem from './NavItem';
 
 export default function Sidebar({ currentPath }: { currentPath: string }) {
     return (
-        <div className="w-full h-full flex flex-col items-start justify-center p-5 gap-4 bg-background rounded-2xl">
-            <NavItem title="Home" path={'/'} active={currentPath === '/'} />
+        <div className="w-full h-full flex flex-col items-start justify-start p-5 gap-4 rounded-2xl">
+            <h3 className="text-3xl text-center text-primary">
+                <strong>SNEAKERHEAD</strong>
+            </h3>
+            <div className="w-full h-0.5 bg-primary"></div>
             <NavItem
-                title="Projects"
-                path={'/projects'}
-                active={currentPath === '/projects'}
+                title="Home"
+                path={'/'}
+                icon={<AiFillHome />}
+                active={currentPath === '/'}
+            />
+            <NavDropdown
+                title="Master"
+                path={'/master'}
+                active={currentPath === '/'}
             />
             <NavItem
                 title="Blogs"
