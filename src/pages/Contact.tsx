@@ -1,25 +1,28 @@
-import React from 'react';
 
 export default function Contact() {
     return (
-        <div className="bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 min-h-screen py-12 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
-            <div className="max-w-4xl w-full bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-3xl shadow-2xl overflow-hidden flex">
-                <div
-                    className="w-1/2 bg-cover bg-center hidden lg:block"
-                    style={{
-                        backgroundImage:
-                            "url('https://source.unsplash.com/random/800x800?nature')",
-                    }}
-                ></div>
-                <div className="w-full lg:w-1/2 p-12">
-                    <h2 className="text-4xl font-extrabold text-white mb-6">
-                        Get in Touch
+        <div className="bg-gray-100 min-h-screen p-8">
+            <div className="max-w-6xl mx-auto bg-gray-800 rounded-lg shadow-xl overflow-hidden flex flex-col md:flex-row">
+                <div className="w-full md:w-1/3 bg-gray-900 p-8">
+                    <h2 className="text-3xl font-bold text-pink-200 mb-6">
+                        Contact Us
                     </h2>
+                    <p className="text-gray-400 mb-6">
+                        Get in touch with us for any inquiries or support.
+                    </p>
+                    <div className="text-gray-400">
+                        <p className="mb-2">123 Sneaker Street</p>
+                        <p className="mb-2">Footwear City, FC 12345</p>
+                        <p className="mb-2">Phone: (555) 123-4567</p>
+                        <p>Email: info@sneakerhead.com</p>
+                    </div>
+                </div>
+                <div className="w-full md:w-2/3 p-8">
                     <form className="space-y-6">
                         <div>
                             <label
                                 htmlFor="name"
-                                className="block text-white text-sm font-medium mb-2"
+                                className="block text-pink-200 text-sm font-medium mb-2"
                             >
                                 Name
                             </label>
@@ -27,7 +30,7 @@ export default function Contact() {
                                 type="text"
                                 id="name"
                                 name="name"
-                                className="w-full px-4 py-3 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+                                className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-200 focus:border-transparent"
                                 placeholder="Your Name"
                                 required
                             />
@@ -35,7 +38,7 @@ export default function Contact() {
                         <div>
                             <label
                                 htmlFor="email"
-                                className="block text-white text-sm font-medium mb-2"
+                                className="block text-pink-200 text-sm font-medium mb-2"
                             >
                                 Email
                             </label>
@@ -43,7 +46,7 @@ export default function Contact() {
                                 type="email"
                                 id="email"
                                 name="email"
-                                className="w-full px-4 py-3 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+                                className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-200 focus:border-transparent"
                                 placeholder="your@email.com"
                                 required
                             />
@@ -51,7 +54,7 @@ export default function Contact() {
                         <div>
                             <label
                                 htmlFor="message"
-                                className="block text-white text-sm font-medium mb-2"
+                                className="block text-pink-200 text-sm font-medium mb-2"
                             >
                                 Message
                             </label>
@@ -59,7 +62,7 @@ export default function Contact() {
                                 id="message"
                                 name="message"
                                 rows="4"
-                                className="w-full px-4 py-3 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+                                className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-200 focus:border-transparent"
                                 placeholder="Your message here..."
                                 required
                             ></textarea>
@@ -67,7 +70,7 @@ export default function Contact() {
                         <div>
                             <button
                                 type="submit"
-                                className="w-full bg-white text-purple-600 font-bold py-3 px-4 rounded-lg hover:bg-opacity-90 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+                                className="w-full bg-pink-200 text-gray-900 font-bold py-3 px-4 rounded-lg hover:bg-pink-300 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-opacity-50"
                             >
                                 Send Message
                             </button>
